@@ -1,0 +1,326 @@
+body, html
+{
+	width : 100%;
+	height : 100%;
+	/*padding : 0;*/
+	/*margin : 0;*/
+	/*background-color : #ffcccc;*/
+	background-color : #7efff5;
+}
+
+.columns_style
+{
+	margin-top : 20px;
+}
+
+.main_sec
+{
+	width : 95%;
+	margin : auto;
+}
+
+/*hero*/
+
+.hero-body
+{
+	width : 70%;
+	height : 50%;
+}
+
+.hero-body #titleContainer
+{
+	width : 100%;
+	height : 100%;
+	padding : 15px;
+}
+
+.blog_title
+{
+	text-align : center;
+	/*color : red;*/
+	margin-bottom : 50px;
+	font-size : 3rem;
+}
+
+.blog_subtitle
+{
+	text-align : center;
+	font-size : 2rem;
+	margin-top : 15px;
+}
+
+.blog_container
+{
+	/*margin : auto;*/
+	margin : 0;
+	padding : 0;
+}
+
+.center
+{
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+}
+
+.card
+{
+	margin : 10px;
+	padding : 10px;
+}
+
+.card_post
+{
+	width : 100%;
+	margin : 0;
+	padding : 0;
+}
+
+
+/*about section*/
+
+.about_self
+{
+	/*height : 50%;*/
+	text-align : center;
+}
+
+#about_image_container
+{
+	margin : 20px, 0px;
+}
+
+#description
+{
+	margin : 50px 0px;
+}
+
+.modal-content
+{
+	/*width : 80%;*/
+	/*height : 80%;*/
+	display : flex;
+
+}
+
+.modal-content .image_form
+{
+	width :100%;
+	height : 100%;
+}
+
+.modal-content
+{
+	width : 80%;
+	height : 90%;
+}
+
+.modal_form
+{
+	height :100%;
+	width : 100%;
+}
+
+.flex_row
+{
+	display : flex;
+	flex : 1, 1, 0;
+
+}
+
+
+.file-label 
+{
+	/*width : 100%;*/
+}
+
+.file-label .file-name
+{
+	margin-top : 5px;
+	margin-bottom : 20px;
+}
+
+.text_edit
+{
+	height : 50%;
+	width : 100%;
+	padding : 10px;
+}
+
+.text_edit .edit_title
+{
+	width : 70%;
+}
+
+.text_edit .edit_desc
+{
+	width : 90%;
+}
+
+
+
+.file_upload
+{
+	width : 100%;
+	height : 40%;
+	padding : 10px;
+}
+
+.file_upload .file .file-label
+{
+	display : flex;
+	flex-direction : column;
+}
+
+
+.file_upload .file .file-label .file-name
+{
+	width : 100%;
+}
+
+
+.modal_content .update_button
+{
+	display : flex;
+	align-items : center;
+	justify-content : center;
+}
+
+
+
+#edit_button
+{
+	margin-left : 100px;
+	margin-bottom : 30px;
+}
+
+.column .section .image .avatar_img
+{
+	border : 1px solid black;
+/*	max-height : 100%;
+	max-width : 100%;*/
+	height : 100%;
+	width : 100%;
+	/*object-fit : cover;*/
+}
+
+.container .image #avatar_img
+{
+	border : 1px solid black;
+	height : 100%;
+	width : 100%;
+	/*object-fit : cover;*/
+}
+
+
+/*post modal*/
+.postForm
+{
+	width : 100%;
+	height : 100%;
+	display : flex;
+	flex-direction : column;
+	align-items : center;
+}
+
+
+#postContainer
+{
+	width : 66%;
+	height : 65%;
+	padding : 0;
+	margin : 0;
+}
+
+#editContainer
+{
+	display : flex;
+
+}
+
+#editContainer .field
+{
+	margin : 0;
+	padding : 0;
+	width : 85%;
+	height : auto;
+}
+
+#postModal .modal-content
+{
+	width : 90%;
+	height : 95%;
+}
+
+.postForm .postTitle
+{
+	width : 50%;
+}
+
+.postForm .titleInput
+{
+	width : 100%;
+	margin-top : 15px;
+	text-align : center;
+}
+
+.postForm .subButton
+{
+	margin-top :10px;
+	width : 30%;
+}
+
+#postContainer .control
+{
+	height : 100%;
+}
+
+#postTextArea
+{
+	height : 100%;
+	overflow : auto;
+}
+
+#postTextArea:empty:before
+{
+	content : attr(placeholder);
+	color : #ccc;
+	font-size : 1.2rem;
+}
+
+#buttonBar
+{
+	margin-top : 10px;
+	padding : 0;
+	display : flex;
+}
+
+#buttonBar a
+{
+	margin-right :30px;
+}
+
+#buttonBar #logout
+{
+	margin-left : auto;
+}
+
+
+
+::placeholder
+{
+	 /* Chrome, Firefox, Opera, Safari 10.1+ */
+	/*color : red;*/
+	opacity : 1;
+}
+
+:-ms-input-placeholder 
+{ /* Internet Explorer 10-11 */
+  opacity : 1;
+}
+
+::-ms-input-placeholder
+{ /* Microsoft Edge */
+  opacity : 1;
+}

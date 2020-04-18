@@ -1,0 +1,59 @@
+html, body
+{
+	width : 100%;
+	height : 100%;
+	padding : 0;
+	margin : 0;
+}
+
+.main_sec
+{
+	height : 100%;
+	width : 80%;
+	margin : auto;
+}
+
+.center
+{
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items :center;
+}
+
+.form
+{
+	width : 100%;
+	height : 100%;
+}
+
+.field .title_container
+{
+	width : 80%;
+}
+
+.field .control .title
+{
+	width : 100%;
+}
+
+.field .post_container
+{
+	width : 100%;
+	height : 100%;
+}
+
+.field .control .post
+{
+	width : 100%;
+}
+
+.field .submit_container
+{
+	width : 100%;
+}
+
+.field .control .button
+{
+	width : 60%;
+}

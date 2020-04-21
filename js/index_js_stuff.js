@@ -2,6 +2,8 @@
 
 let submit_button = document.getElementById("submit_button");
 let form  = document.getElementById("form");
+let hero_form = document.getElementById("hero_modal");
+let hero_submit = document.getElementById("submit_hero_form");
 
 
 window.onload = function()
@@ -28,6 +30,17 @@ submit_button.addEventListener("click", () =>
 				manualSubmission(form, "submitForm", "hidden button");
 			}, 500);
 	});
+
+
+	// hero form
+	hero_form.addEventListener("submit", (event) =>
+		{
+			event.preventDefault();
+		});
+	hero_submit.addEventListener("click", () =>
+		{
+			updateHero();
+		});
 
 
 function manualSubmission(frm, name, value)
@@ -83,17 +96,81 @@ function closeModal()
 	element.classList.remove("is-active");
 }
 
-function openPostModal()
+function openHeroModal()
 {
-	let element = document.getElementById("postModal");
-	element.classList.add("is-active");
+	let h_modal = document.getElementById("hero_modal");
+	// inputs
+	let h_blog_title_in = document.getElementById("h_blog_title_in");
+	let h_subtitle_in = document.getElementById("h_blog_subtitle_in");
+	let h_color = document.getElementById("hero_color");
+	// actual values from the webpage
+	let hero_title = document.getElementById("hero_title");
+	let hero_subtitle = document.getElementById("hero_subtitle");
+
+	// toggle visibility on
+	h_modal.classList.add("is-active");
+
+	// add previous values to text fields
+	h_blog_title_in.value = hero_title.textContent.trim();
+	h_subtitle_in.value = hero_subtitle.textContent.trim();
 }
 
-function closePostModal()
+function closeHeroModal()
 {
-	let element = document.getElementById("postModal");
-	element.classList.remove("is-active");
+	let h_modal = document.getElementById("hero_modal");
+	h_modal.classList.remove("is-active");
 }
+
+
+
+function updateHero()
+{
+	let h_modal = document.getElementById("hero_modal");
+	// inputs
+	let h_blog_title_in = document.getElementById("h_blog_title_in");
+	let h_subtitle_in = document.getElementById("h_blog_subtitle_in");
+	let h_color = document.getElementById("hero_color");
+	// actual values from the webpage
+	let hero_title = document.getElementById("hero_title");
+	let hero_subtitle = document.getElementById("hero_subtitle");
+
+	let updateList = {};
+	let json_updateList = {};
+
+
+
+	if(h_blog_title_in.value.trim() !== hero_title.textContent.trim())
+	{
+		updateList["blog_title"] = h_blog_title_in.value;
+	}
+	if(h_subtitle_in.value.trim() !== hero_subtitle.textContent.trim())
+	{
+		updateList["blog_subtitle"] = h_subtitle_in.value;
+	}
+
+	// console.log(updateList);
+
+	//ajax
+	let xmlHttp = get_ajaxHandle();
+	xmlHttp.onreadystatechange = () =>
+	{
+		if(this.readyState == 4 && this.status == 200)
+		{
+			console.log("fired");
+			console.log(this.responseText);
+		}
+		else
+		{
+			console.log("didn't fire");
+		}
+	}
+
+	json_updateList = JSON.stringify(updateList);
+	xmlHttp.open("GET", "php/updateHero.php?json=" + json_updateList, true);
+	xmlHttp.send();
+
+}
+
 
 
 function updateAbout()
@@ -198,12 +275,10 @@ function changePreviewImage()
 		let fileName = document.querySelector("#file_name");
 		fileName.textContent = fileInput.files[0].name;
 
-		// load image into preview window
-		console.log(previewImage);
-		previewImage.src = "css/images/" + fileInput.files[0].name;
 	}
 
 }
+
 
 function get_ajaxHandle()
 {

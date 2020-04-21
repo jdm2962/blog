@@ -43,15 +43,76 @@
 		<section class="hero is-primary is-bold is-medium center">
 		  <div class="hero-body">
 		    <div class="container" id = "titleContainer">
-		      <h1 class="title blog_title">
+	    	<!-- edit button -->
+				<div class = "display_if_logged_in">
+					<div id = "hero_edit_button">
+						<button class = "button is-warning" onclick = "openHeroModal()">
+							<span class = "icon">
+								<i class="fas fa-edit"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+		      <h1 class="title blog_title" id = "hero_title">
 		        My Blog
 		      </h1>
-		      <h2 class="subtitle blog_subtitle has-text-warning">
+		      <h2 class="subtitle blog_subtitle has-text-warning" id = "hero_subtitle">
 		        Welcome!
 		      </h2>
 		    </div>
 		  </div>
 		</section>
+
+		<!-- hero edit modal -->
+		<div class="modal  is-active" id = "hero_modal">
+		  <div class="modal-background" onclick = "closeHeroModal()"></div>
+		  <div class="modal-content">
+		    <!-- Any other Bulma elements you want -->
+
+		    <form class = "container has-background-white-ter" id = "hero_modal_form">
+
+		    	<!-- hero title -->
+		    	<div class="field">
+		    	  <label class = "label">Blog Title</label>
+				  <div class="control">
+				    <input class="input is-primary" type="text" placeholder="Enter Blog Title!" name="heroTitle" id = "h_blog_title_in">
+				  </div>
+				</div>
+		    	
+				<!-- subtitle -->
+		    	<div class="field">
+		    	  <label class = "label">Subtitle</label>
+				  <div class="control">
+				    <input class="input is-primary" type="text" placeholder="Enter Subtitle!" name="heroSubtitle" id = "h_blog_subtitle_in">
+				  </div>
+				</div>
+
+		    	<!-- color -->
+		    	<div class = "container" id = "color_colorPrev">
+			    	<div class="field center" id = "color_in">
+			    	  <label class = "label">Background Color</label>
+					  <div class="control center">
+					   	<input type="color" name="color" id = "hero_color">
+					  </div>
+					</div>
+					<div class = "container" id = "color_preview_container">
+						<label class = "label">Preview</label>
+						<div class = "" id = "color_preview"></div>
+					</div>
+				</div>
+
+				<div class="field">
+				  <div class="control center">
+				   	<input type="submit" class = "button is-primary" name="submit_hero_form" id = "submit_hero_form" value = "Submit!">
+				  </div>
+				</div>
+		    	
+
+		    </form>
+		  </div>
+		  <button class="modal-close is-large" aria-label="close" onclick = "closeHeroModal()"></button>
+		</div>
+
 
 
 		<div class = "container" id = "buttonBar">
@@ -63,7 +124,7 @@
 				<a class = "button is-warning is-large" href="/blog/postcreation.php">New Post</a>
 			</div>
 			<div class = "display_if_logged_in" id = "logout">
-				<button class = "button is-warning is-large">Logout</button>
+				<button class = "button is-warning is-large" id = "lgout">Logout</button>
 			</div>
 		</div>
 	

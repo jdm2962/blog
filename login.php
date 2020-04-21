@@ -10,6 +10,7 @@
 <?php
 	// includes
 	include "../../inc/dbinfo.inc";
+	include "../../inc/data.inc";
 
 ?>
 
@@ -64,7 +65,7 @@
 	
 	// create user. done manually this time, since there is only 1 person that need to login: the blog owner
 
-	$user = "owner";
+	$user = USER;
 
 	// check whether the user exists
 	$sql = "SELECT username FROM loginTable WHERE username = '$user'";
@@ -75,7 +76,7 @@
 	}
 	else
 	{
-		$password = "pass";
+		$password = PASSWORD;
 		$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 		// echo strlen($hashed_password);
 		$sql = "INSERT INTO loginTable (username, password) 

@@ -40,7 +40,7 @@
 
 		<!-- <div class = "display_if_logged_in"><a href = 'postcreation.php' class = "button is-warning is-large">New Post</a></div> -->
 			
-		<section class="hero is-primary is-bold is-medium center">
+		<section class="hero is-bold is-medium center" id = "hero">
 		  <div class="hero-body">
 		    <div class="container" id = "titleContainer">
 	    	<!-- edit button -->
@@ -56,7 +56,7 @@
 		      <h1 class="title blog_title" id = "hero_title">
 		        My Blog
 		      </h1>
-		      <h2 class="subtitle blog_subtitle has-text-warning" id = "hero_subtitle">
+		      <h2 class="subtitle blog_subtitle" id = "hero_subtitle">
 		        Welcome!
 		      </h2>
 		    </div>
@@ -64,7 +64,7 @@
 		</section>
 
 		<!-- hero edit modal -->
-		<div class="modal  is-active" id = "hero_modal">
+		<div class="modal is-active" id = "hero_modal">
 		  <div class="modal-background" onclick = "closeHeroModal()"></div>
 		  <div class="modal-content">
 		    <!-- Any other Bulma elements you want -->
@@ -73,34 +73,83 @@
 
 		    	<!-- hero title -->
 		    	<div class="field">
-		    	  <label class = "label">Blog Title</label>
+		    		
+		    	  <label class = "label is-medium">Blog Title</label>
 				  <div class="control">
 				    <input class="input is-primary" type="text" placeholder="Enter Blog Title!" name="heroTitle" id = "h_blog_title_in">
 				  </div>
+
+				  <!-- title color -->
+				  <div class = "contianer flex_row" id = "title_color">
+			    	  <label class = "label">Title Color</label>
+					  <div class="control">
+					   	<input type="color" name="color" id = "title_color_in">
+					  </div>
+				   </div>
+
 				</div>
 		    	
 				<!-- subtitle -->
 		    	<div class="field">
-		    	  <label class = "label">Subtitle</label>
+		    	  <label class = "label is-medium">Subtitle</label>
 				  <div class="control">
 				    <input class="input is-primary" type="text" placeholder="Enter Subtitle!" name="heroSubtitle" id = "h_blog_subtitle_in">
 				  </div>
+
+				  <!-- subtitle color -->
+				  <div class = "contianer flex_row" id = "subtitle_color">
+			    	  <label class = "label">Subtitle Color</label>
+					  <div class="control">
+					   	<input type="color" name="color" id = "subtitle_color_in">
+					  </div>
+				   </div>
 				</div>
 
 		    	<!-- color -->
 		    	<div class = "container" id = "color_colorPrev">
+
+		    		<!-- color 1 input -->
 			    	<div class="field center" id = "color_in">
-			    	  <label class = "label">Background Color</label>
+			    		<!-- bg color -->
+				    	  <label class = "label">Background Color 1</label>
+						  <div class="control center">
+						   	<input type="color" name="color" id = "hero_color1">
+					  </div>
+
+					  <!-- color2 input -->
+					  <label class = "label">Optional Gradient Color</label>
 					  <div class="control center">
-					   	<input type="color" name="color" id = "hero_color">
+
+					  	 <!-- optional color selection -->
+						  <div class="control" id = "radio_optional_color">
+							  <label class="radio">
+							    <input type="radio" name="answer">
+							    Yes
+							  </label>
+							  <label class="radio">
+							    <input type="radio" name="answer">
+							    No
+							  </label>
+							</div>
+							
+							<!-- input -->
+					   	<input type="color" name="color" id = "hero_color2">
 					  </div>
 					</div>
+
+					<!-- preview -->
 					<div class = "container" id = "color_preview_container">
-						<label class = "label">Preview</label>
-						<div class = "" id = "color_preview"></div>
+						<label class = "label is-medium">Preview</label>
+						<div class = "center" id = "color_preview">
+							<div class = "container center">
+								<h1 class = "title" id = "title_preview">Title</h1>
+								<h2 class = "subtitle" id = "subtitle_preview">Subtitle</h2>
+							</div>
+						</div>
 					</div>
 				</div>
 
+				<!-- hero sumbit -->
 				<div class="field">
 				  <div class="control center">
 				   	<input type="submit" class = "button is-primary" name="submit_hero_form" id = "submit_hero_form" value = "Submit!">

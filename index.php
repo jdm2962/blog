@@ -64,7 +64,7 @@
 		</section>
 
 		<!-- hero edit modal -->
-		<div class="modal is-active" id = "hero_modal">
+		<div class="modal is-clipped" id = "hero_modal">
 		  <div class="modal-background" onclick = "closeHeroModal()"></div>
 		  <div class="modal-content">
 		    <!-- Any other Bulma elements you want -->
@@ -73,31 +73,36 @@
 
 		    	<!-- hero title -->
 		    	<div class="field">
-		    		
-		    	  <label class = "label is-medium">Blog Title</label>
-				  <div class="control">
-				    <input class="input is-primary" type="text" placeholder="Enter Blog Title!" name="heroTitle" id = "h_blog_title_in">
-				  </div>
-
-				  <!-- title color -->
-				  <div class = "contianer flex_row" id = "title_color">
-			    	  <label class = "label">Title Color</label>
+		    	  <div class = "contianer color_input_container">
+			    	  <label class = "label is-medium">Blog Title</label>
 					  <div class="control">
-					   	<input type="color" name="color" id = "title_color_in">
+					    <input class="input is-primary" type="text" placeholder="Enter Blog Title!" name="heroTitle" id = "h_blog_title_in">
 					  </div>
-				   </div>
+				    </div>
+
+
+					  <!-- title color -->
+					  <div class = "contianer color_input_container" id = "title_color">
+				    	  <label class = "label">Title Color</label>
+						  <div class="control">
+						   	<input type="color" name="color" id = "title_color_in">
+						  </div>
+					   </div>
+
 
 				</div>
 		    	
 				<!-- subtitle -->
 		    	<div class="field">
-		    	  <label class = "label is-medium">Subtitle</label>
-				  <div class="control">
-				    <input class="input is-primary" type="text" placeholder="Enter Subtitle!" name="heroSubtitle" id = "h_blog_subtitle_in">
+		    	  <div class = "contianer color_input_container">
+			    	  <label class = "label is-medium">Subtitle</label>
+					  <div class="control">
+					    <input class="input is-primary" type="text" placeholder="Enter Subtitle!" name="heroSubtitle" id = "h_blog_subtitle_in">
+					  </div>
 				  </div>
 
 				  <!-- subtitle color -->
-				  <div class = "contianer flex_row" id = "subtitle_color">
+				  <div class = "contianer color_input_container" id = "subtitle_color">
 			    	  <label class = "label">Subtitle Color</label>
 					  <div class="control">
 					   	<input type="color" name="color" id = "subtitle_color_in">
@@ -111,13 +116,13 @@
 		    		<!-- color 1 input -->
 			    	<div class="field center" id = "color_in">
 			    		<!-- bg color -->
-				    	  <label class = "label">Background Color 1</label>
+				    	  <label class = "label">BG Color</label>
 						  <div class="control center">
 						   	<input type="color" name="color" id = "hero_color1">
 					  </div>
 
 					  <!-- color2 input -->
-					  <label class = "label">Optional Gradient Color</label>
+					  <label class = "label">Optional Gradient</label>
 					  <div class="control center">
 
 					  	 <!-- optional color selection -->
@@ -166,13 +171,13 @@
 
 		<div class = "container" id = "buttonBar">
 			<!-- link to login page -->
-			<a class = "button is-warning is-large" href = "/blog/login.php">Login</a>
-
-			<div class = "display_if_logged_in">
-				<!-- <button class = "button is-warning is-large" onclick = "openPostModal()">New Post</button> -->
+			<div class = "btn">
+				<a class = "button is-warning is-large btn" href = "/blog/login.php">Login</a>
+			</div>
+			<div class = "display_if_logged_in btn">
 				<a class = "button is-warning is-large" href="/blog/postcreation.php">New Post</a>
 			</div>
-			<div class = "display_if_logged_in" id = "logout">
+			<div class = "display_if_logged_in btn" id = "logout">
 				<button class = "button is-warning is-large" id = "lgout">Logout</button>
 			</div>
 		</div>
@@ -240,66 +245,68 @@
 
 			<!-- About Section -->
 			<div class = "column is-one-third">
-				<section class = "section has-background-white-ter about_self center">
+				<!-- <section class = "section  about_self has-background-white-ter"> -->
+					<div class = "container center about_self has-background-white-ter">
 
-					<!-- title -->
-					<h3 class = "title" id = "title"></h3>
+						<!-- title -->
+						<h3 class = "title" id = "title"></h3>
 
-					<!-- edit button -->
-					<div class = "display_if_logged_in edit_button" id = "edit_button">
-						<button class = "button is-warning" onclick = "openModal()">
-							<span class = "icon">
-								<i class="fas fa-edit"></i>
-							</span>
-						</button>
-					</div>
+						<!-- edit button -->
+						<div class = "display_if_logged_in edit_button" id = "edit_button">
+							<button class = "button is-warning" onclick = "openModal()">
+								<span class = "icon">
+									<i class="fas fa-edit"></i>
+								</span>
+							</button>
+						</div>
 
-					<!-- image -->
-					<figure class = "image is-128x128" id = "about_image_container">
-						<!-- <img class = "is-rounded avatar_img" src = "images/sample_avatar.jfif"> -->
-						<?php
-							//get image 
-							$dirName = "/var/www/html/blog/php/img";
-							$dir = new DirectoryIterator($dirName);
+						<!-- image -->
+						<figure class = "image is-128x128" id = "about_image_container">
+							<!-- <img class = "is-rounded avatar_img" src = "images/sample_avatar.jfif"> -->
+							<?php
+								//get image 
+								$dirName = "/var/www/html/blog/php/img";
+								$dir = new DirectoryIterator($dirName);
 
-							foreach($dir as $file)
-							{
-								if(!$file -> isDot())
+								foreach($dir as $file)
 								{
-									// echo "$file<br>";
-									if(getimagesize($file -> getPath() . "/" . $file))
+									if(!$file -> isDot())
 									{
-										echo "<img  class = 'is-rounded avatar_img'src = php/img/" . $file .">";
-									}
-									else
-									{
-										// echo "Didn't get it";
+										// echo "$file<br>";
+										if(getimagesize($file -> getPath() . "/" . $file))
+										{
+											echo "<img  class = 'is-rounded avatar_img'src = php/img/" . $file .">";
+										}
+										else
+										{
+											// echo "Didn't get it";
+										}
 									}
 								}
-							}
-						?>
-					</figure>
+							?>
+						</figure>
 
-					<!-- description -->
-					<p class = "container is-size-5 about_desc" id = "description"></p>
+						<!-- description -->
+						<p class = "container" id = "description"></p>
 
-					<!-- social media bar -->
-					<div class = "container" id = "social_media_bar">
-						<a class = "button is-link">
-							<span class = "icon">
-								<i class="fab fa-facebook"></i>
-							</span>
-						</a>
-						<a class = "button is-danger">
-							<span class = "icon">
-								<i class="fab fa-instagram"></i>
-							</span>
-						</a>
-						<a class = "button is-info">
-							<span class = "icon">
-								<i class="fab fa-twitter-square"></i>
-							</span>
-						</a>
+						<!-- social media bar -->
+						<div class = "container" id = "social_media_bar">
+							<a class = "button is-link">
+								<span class = "icon">
+									<i class="fab fa-facebook"></i>
+								</span>
+							</a>
+							<a class = "button is-danger">
+								<span class = "icon">
+									<i class="fab fa-instagram"></i>
+								</span>
+							</a>
+							<a class = "button is-info">
+								<span class = "icon">
+									<i class="fab fa-twitter-square"></i>
+								</span>
+							</a>
+						</div>
 					</div>
 
 					<!-- modal for changing about image avatar -->
@@ -366,7 +373,7 @@
   						<button class="modal-close is-large is-danger" aria-label="close" onclick = "closeModal()"></button>
 					</div>
 
-				</section>
+				<!-- </section> -->
 			</div>
 		</div>
 	</section>

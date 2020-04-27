@@ -5,14 +5,12 @@
 
 ?>
 
-<!DOCTYPE html>
-
 <?php
 	// includes
-	include "../../inc/dbinfo.inc";
 	include "../../inc/data.inc";
-
+	include "../../inc/dbinfo.inc";
 ?>
+
 
 <!-- CREATE DATABASE AND TABLE IF IT DOESN'T EXIST -->
 <?php
@@ -203,14 +201,14 @@
 					}
 					else
 					{
-						echo "Username not valid.";
+						// echo "Username not valid.";
 					}
 					$stmt -> close();
 					$result -> close();
 				}
 				else
 				{
-					echo "Fill out both fields";
+					// echo "Fill out both fields";
 				}
 				
 			}

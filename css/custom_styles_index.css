@@ -8,6 +8,19 @@ body, html
 	background-color : #7efff5;
 }
 
+
+/*helpers*/
+.center
+{
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+}
+
+
+
+
 .columns_style
 {
 	margin-top : 20px;
@@ -158,24 +171,6 @@ body, html
 	padding : 0;
 }
 
-.center
-{
-	display : flex;
-	flex-direction : column;
-	justify-content : center;
-	align-items : center;
-}
-
-.flex_row
-{
-	display : flex;
-}
-
-.flex_col
-{
-	display : flex;
-	flex-direction : column;
-}
 
 .card
 {
@@ -197,6 +192,13 @@ body, html
 {
 	/*height : 50%;*/
 	text-align : center;
+	width : 100%;
+}
+
+.about_self #title
+{
+	width : 80%;
+	margin-top : 10px;
 }
 
 #about_image_container
@@ -206,7 +208,20 @@ body, html
 
 #description
 {
+	width : 80%;
 	margin : 50px 0px;
+	font-size : 1.1rem;
+	line-height : 1.5;
+}
+
+#social_media_bar
+{
+	margin-bottom : 15px;
+}
+
+#social_media_bar .button .icon
+{
+	font-size : 1.3em;
 }
 
 .modal-content
@@ -243,11 +258,7 @@ body, html
 }
 
 
-.file-label 
-{
-	/*width : 100%;*/
-}
-
+/*file input*/
 .file-label .file-name
 {
 	margin-top : 5px;
@@ -308,7 +319,7 @@ body, html
 	margin-bottom : 30px;
 }
 
-.column .section .image .avatar_img
+.column .container .image .avatar_img
 {
 	border : 1px solid black;
 /*	max-height : 100%;
@@ -327,86 +338,13 @@ body, html
 }
 
 
-/*post modal*/
-.postForm
-{
-	width : 100%;
-	height : 100%;
-	display : flex;
-	flex-direction : column;
-	align-items : center;
-}
-
-
-#postContainer
-{
-	width : 66%;
-	height : 65%;
-	padding : 0;
-	margin : 0;
-}
-
-#editContainer
-{
-	display : flex;
-
-}
-
-#editContainer .field
-{
-	margin : 0;
-	padding : 0;
-	width : 85%;
-	height : auto;
-}
-
-#postModal .modal-content
-{
-	width : 90%;
-	height : 95%;
-}
-
-.postForm .postTitle
-{
-	width : 50%;
-}
-
-.postForm .titleInput
-{
-	width : 100%;
-	margin-top : 15px;
-	text-align : center;
-}
-
-.postForm .subButton
-{
-	margin-top :10px;
-	width : 30%;
-}
-
-#postContainer .control
-{
-	height : 100%;
-}
-
-#postTextArea
-{
-	height : 100%;
-	overflow : auto;
-}
-
-#postTextArea:empty:before
-{
-	content : attr(placeholder);
-	color : #ccc;
-	font-size : 1.2rem;
-}
-
+/*button nav bar*/
 #buttonBar
 {
-	margin-top : 10px;
+	margin : 10px 0px;
 	padding : 0;
 	display : flex;
+	width : 100%;
 }
 
 #buttonBar a
@@ -420,6 +358,7 @@ body, html
 }
 
 
+/*input placeholders*/
 /*placeholder text for inputs*/
 ::placeholder
 {
@@ -436,4 +375,114 @@ body, html
 ::-ms-input-placeholder
 { /* Microsoft Edge */
   opacity : 1;
+}
+
+
+/*media queries*/
+
+@media only screen and (max-width : 768px)
+{
+	.container #social_media_bar
+	{
+		display : none;
+	}
+}
+
+
+/*mobile*/
+@media only screen and (max-width : 600px)
+{
+	#buttonBar
+	{
+		flex-direction : column;
+		margin : 10px 0px;
+		padding : 0;
+		align-items : center;
+		justify-content : center;
+		width : 100%;
+	}
+
+	#buttonBar #logout
+	{
+		margin : 0;
+	}
+
+	
+
+	#buttonBar .btn
+	{
+		width : 60%;
+		display : flex;
+		justify-content : center;
+		margin : 0;
+
+	}
+
+	#buttonBar .btn a
+	{
+		width : 100%;
+		border : 1px solid black;
+
+	}
+
+	#buttonBar .btn button
+	{
+		width : 100%;
+		border : 1px solid black;
+
+	}
+
+	.container #social_media_bar
+	{
+		display : none;
+	}
+
+	#color_preview_container
+	{
+		display : none;
+	}
+
+	#hero_modal_form
+	{
+		overflow : auto;
+		width : 100%;
+	}
+
+
+	#hero_modal .modal-content
+	{
+		width : 100%;
+		height : 99%;
+	}
+
+	#hero_modal .modal-content *
+	{
+		margin : 0;
+		padding : 0;
+	}
+
+	#hero_modal_form .field .color_input_container
+	{
+		display : flex;
+		/*flex-direction : column;*/
+		align-items : center;
+		justify-content :center;
+	}
+
+	#hero_modal_form .field .color_input_container .control
+	{
+		display : flex;
+		align-items : center;
+		justify-content :center;
+	}
+
+	#color_in
+	{
+		flex-direction : row;
+	}
+
+	#color_in *
+	{
+		margin : 5px;
+	}
 }

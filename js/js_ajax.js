@@ -1,20 +1,7 @@
 function getUserInfo()
 {
-	let xmlhttp;
+	let xmlhttp = get_ajaxHandle();
 
-	// console.log("getUserInfo called");
-	if (window.XMLHttpRequest)
-	{
-		xmlhttp = new XMLHttpRequest();
-	}
-	else
-	{
-		xmlhttp = new ActiveXObject("Miscrosoft.XMLHTTP");
-		console.log("active");
-	}
-
-	// console.log("xml");
-	// let user_logged_in = false;
 	xmlhttp.onreadystatechange = function()
 	{
 		if (this.readyState == 4 && this.status == 200)

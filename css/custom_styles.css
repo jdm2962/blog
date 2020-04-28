@@ -4,15 +4,24 @@ body, html
 			height : 100%;
 		}
 
+		body
+		{
+			display : flex;
+			flex-direction : column;
+			align-items : center;
+			justify-content : center;
+			background : linear-gradient(45deg, red, blue);
+		}
+
 		.main_section
 		{
-			border : 1px solid black;
-			height : 100%;
-			width : 50%;
+			height : 90%;
+			width : 45%;
 			display : flex;
 			align-items : center;
 			justify-content : center;
 			margin : auto;
+			border : 2px solid #32ff7e;
 
 		}
 
@@ -54,4 +63,27 @@ body, html
 		.submit_input
 		{
 			width : 100%;
+		}
+
+
+		@media only screen and (max-width : 768px)
+		{
+			.main_section
+			{
+				width : 70%;
+			}
+		}
+
+		@media only screen and (max-width : 600px)
+		{
+			.main_section
+			{
+				width : 80%;
+				height : 95%;
+			}
+
+			.main_section .title
+			{
+				margin-top : 40px;
+			}
 		}

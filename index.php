@@ -18,11 +18,9 @@
 
 	// query for table data
 		// load hero title, subtitle; about title, about description
-	$sql = "SELECT title, subtitle FROM aboutTable";
-	if($result = $handle -> query($sql))
-	{
-
-	}
+	$sql = "SELECT title, subtitle FROM heroTable WHERE id = 1";
+	$result = $handle -> query($sql);
+	$row = $result -> fetch_row();
 
 ?>
 
@@ -70,17 +68,17 @@
 					</div>
 				</div>
 		      <h1 class="title blog_title" id = "hero_title">
-		        My Blog
+		        <?php echo htmlentities($row[0], ENT_QUOTES | ENT_HTML401, "UTF-8"); ?>
 		      </h1>
 		      <h2 class="subtitle blog_subtitle" id = "hero_subtitle">
-		        Welcome!
+		        <?php echo htmlentities($row[1], ENT_QUOTES | ENT_HTML401, "UTF-8"); ?>
 		      </h2>
 		    </div>
 		  </div>
 		</section>
 
 		<!-- hero edit modal -->
-		<div class="modal is-clipped" id = "hero_modal">
+		<div class="modal" id = "hero_modal">
 		  <div class="modal-background" onclick = "closeHeroModal()"></div>
 		  <div class="modal-content">
 		    <!-- Any other Bulma elements you want -->
@@ -135,7 +133,7 @@
 				    	  <label class = "label">BG Color</label>
 						  <div class="control center">
 						   	<input type="color" name="color" id = "hero_color1">
-					  </div>
+					  	  </div>
 
 					  <!-- color2 input -->
 					  <label class = "label">Optional Gradient</label>
@@ -238,7 +236,7 @@
 													$row["date"] .
 												'</time>';
 								echo			'<div class = "content is-size-5">' .
-													htmlentities($row["post"], ENT_QUOTES | ENT_HTML401, "UTF-8") .
+													htmlentities($row["post"],  ENT_QUOTES | ENT_HTML401, "UTF-8") .
 												'</div>'; 
 								echo		'</div>';
 								echo	'</div>';
@@ -260,12 +258,22 @@
 			</div>
 
 			<!-- About Section -->
+
+			<?php 
+				$handle = getDB("real_blogDB");
+				$sql = "SELECT title, description FROM aboutTable WHERE id = 1";
+				$result = $handle -> query($sql);
+				$row = $result -> fetch_row(); 
+			?>
+
 			<div class = "column is-one-third">
 				<!-- <section class = "section  about_self has-background-white-ter"> -->
 					<div class = "container center about_self has-background-white-ter">
 
 						<!-- title -->
-						<h3 class = "title" id = "title"></h3>
+						<h3 class = "title" id = "title">
+							<?php echo htmlentities($row[0], ENT_QUOTES | ENT_HTML401, "UTF-8"); ?>
+						</h3>
 
 						<!-- edit button -->
 						<div class = "display_if_logged_in edit_button" id = "edit_button">
@@ -304,7 +312,9 @@
 						</figure>
 
 						<!-- description -->
-						<p class = "container" id = "description"></p>
+						<p class = "container" id = "description">
+							<?php echo htmlentities($row[1], ENT_QUOTES | ENT_HTML401, "UTF-8"); ?>		
+						</p>
 
 						<!-- social media bar -->
 						<div class = "container" id = "social_media_bar">
@@ -335,13 +345,13 @@
 
 				   		 	<!-- edit title -->
 					   		 <form class = "container image_form center" id = "form" action = "php/imageUpload.php" enctype = "multipart/form-data" method = "POST" name = "submitForm">
-					   		 	<div class = "field">
+					   		 	<div class = "field center" id = "edit_title">
 					   		 		<label class = "label">Edit title</label>
 					   				<input type="text" name="title_input" class = "input is-primary" id = "title_input">
 					   		 	</div>
 
 					   		 	<!-- description -->
-					   		 	<div class = "field edit_desc">
+					   		 	<div class = "field" id = "edit_desc">
 				   					<div class = "control center">
 				   						<label class = "label">Edit Description</label>
 				   						<textarea class = "textarea has-fixed-size is-primary" id = "description_input"></textarea>
@@ -349,7 +359,7 @@
 					   			</div>
 
 					   			<!-- image upload -->
-					   			<section class = "section flex_row file_upload">
+					   			<section class = "section flex_row file_upload" id = "about_image_section">
 					   		 	
 						   		 	<!-- file input -->
 					   				<div class = "file has-name is-info">
@@ -370,7 +380,7 @@
 					   				</div>
 
 					   				<!-- preview image -->
-					   				<div class = "container center preview_image">
+					   				<div class = "container center preview_image" id = "about_img">
 						   				<label class = "label preview_label">Preview Image</label>
 						   				<figure class = "image is-128x128">
 						   					<img class = "is-rounded" id = "avatar_img" src = "">

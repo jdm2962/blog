@@ -17,8 +17,8 @@
 		// print_r($row);
 		// array_push($dataList, title, description);
 		
-		$dataList["title"] = htmlentities($row["title"], ENT_QUOTES | ENT_HTML401, "UTF-8");
-		$dataList["description"] = htmlentities($row["description"], ENT_QUOTES | ENT_HTML401, "UTF-8");
+		// $dataList["title"] = htmlentities($row["title"], ENT_HTML401, "UTF-8");
+		// $dataList["description"] = htmlentities($row["description"], ENT_HTML401, "UTF-8");
 	}
 
 	// get title, subtitle, color, color2 for hero section
@@ -27,8 +27,8 @@
 	if($result -> num_rows > 0)
 	{
 		$row = $result -> fetch_assoc();
-		$dataList["h_title"] = htmlentities($row["title"], ENT_QUOTES | ENT_HTML401, "UTF-8");
-		$dataList["h_subtitle"]  = htmlentities($row["subtitle"], ENT_QUOTES | ENT_HTML401, "UTF-8");
+		// $dataList["h_title"] = htmlentities($row["title"], ENT_HTML401, "UTF-8");
+		// $dataList["h_subtitle"]  = htmlentities($row["subtitle"], ENT_HTML401, "UTF-8");
 		$dataList["color"]  = $row["color"];
 		$dataList["color2"]  = $row["color2"];
 		$dataList["title_color"] = $row["title_color"];

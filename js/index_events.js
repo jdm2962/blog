@@ -29,7 +29,7 @@ for(let i = 0; i < radio_color.length; i++)
 }
 
 
-
+// hero background colors(color1, color2)
 color1.addEventListener("change", () =>
 {
 	console.log("color 1 changed");
@@ -67,6 +67,7 @@ subtitle_color.addEventListener("change", () =>
 	subtitle_change = true;
 })
 
+// about form
 form.addEventListener("submit", function(event)
 {
 	event.preventDefault();
@@ -86,14 +87,15 @@ submit_button.addEventListener("click", () =>
 
 // hero form
 hero_form.addEventListener("submit", (event) =>
-	{
-		event.preventDefault();
-	});
+{
+	event.preventDefault();
+});
+
 hero_submit.addEventListener("click", () =>
-	{
-		updateHero();
-		setTimeout(() =>
-			{
-				location.reload();
-			}, 500);
-	});
+{
+	updateHero();
+	setTimeout(() =>
+		{
+			location.reload();
+		}, 500);
+});

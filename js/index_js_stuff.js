@@ -1,4 +1,6 @@
 
+let h = document.getElementsByTagName("html");
+let html = h[0];
 let aboutTitle = document.getElementById("title");
 let aboutDescription = document.getElementById("description");
 let editTitle = document.getElementById("title_input");
@@ -46,6 +48,7 @@ function openModal()
 
 	// make modal active
 	element.classList.add("is-active");
+	html.classList.add("is-clipped");
 
 	// load previous title and description into modal fields
 	editTitle.value = aboutTitle.textContent.trim();
@@ -60,6 +63,7 @@ function closeModal()
 {
 	let element = document.querySelector("#aboutModal");
 	element.classList.remove("is-active");
+	html.classList.remove("is-clipped");
 }
 
 // hero modal
@@ -67,17 +71,17 @@ function openHeroModal()
 {
 	// toggle visibility on
 	h_modal.classList.add("is-active");
+	html.classList.add("is-clipped");
 
 	// add values from the page to the modal
 	h_blog_title_in.value = hero_title.textContent.trim();
 	h_subtitle_in.value = hero_subtitle.textContent.trim();
-
-
 }
 
 function closeHeroModal()
 {
 	h_modal.classList.remove("is-active");
+	html.classList.remove("is-clipped");
 }
 
 
@@ -148,7 +152,7 @@ function updateHero()
 	}
 
 	json_updateList = JSON.stringify(updateList);
-	console.log(json_updateList);
+	// console.log(json_updateList);
 	xmlHttp.open("GET", "php/updateHero.php?json=" + json_updateList, true);
 	xmlHttp.send();
 
@@ -208,17 +212,6 @@ function updateAbout()
 // load variable data from db into editable fields
 function loadData()
 {
-	//elements
-	let aboutTitle = document.getElementById("title");
-	let aboutDescription = document.getElementById("description");
-	// let aboutImage = document.getElementById("about_image_container");
-
-	// load hero sections
-	let hero = document.getElementById("hero");
-	let hero_title = document.getElementById("hero_title");
-	let hero_subtitle = document.getElementById("hero_subtitle");
-	let color1 = document.getElementById("hero_color1");
-	let color2 = document.getElementById("hero_color2");
 
 	let response;
 
@@ -230,13 +223,10 @@ function loadData()
 		if(this.readyState == 4 && this.status == 200)
 		{
 			// response data
-			console.log("loaded")
 			response = JSON.parse(this.responseText);
-			console.log(response);
-			aboutTitle.textContent = response["title"];
-			aboutDescription.textContent = response["description"];
-			hero_title.textContent = response["h_title"];
-			hero_subtitle.textContent = response["h_subtitle"];
+
+			// set colors
+
 			color1.value = "#" + response["color"];
 			color2.value = "#" + response["color2"];
 
@@ -251,15 +241,17 @@ function loadData()
 			// check return colors
 			if(response["color2"] == "")
 			{
+				// toggle radio off if no gradient color
 				radio_color[1].checked = true;
+				// toggle gradient input off
 				color2.style.display = "none";
 
 				// if no color 2, then only 1 color is selected.. fill bg with the one color
 				color_preview.style.backgroundColor = "#" + response["color"];
 				// fill hero background with color
 				hero.style.backgroundColor = "#" + response["color"];
-
 			}
+
 			if(response["color2"] !== "")
 			{
 				radio_color[0].checked = true;
@@ -284,12 +276,9 @@ function loadData()
 
 		}
 	}
-	console.log("loaded")
 
 	xmlhttp.open("GET", "php/loadData.php", true);
 	xmlhttp.send();
-
-
 }
 
 
@@ -303,9 +292,7 @@ function changePreviewImage()
 	{
 		let fileName = document.querySelector("#file_name");
 		fileName.textContent = fileInput.files[0].name;
-
 	}
-
 }
 
 

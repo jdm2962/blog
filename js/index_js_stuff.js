@@ -1,9 +1,26 @@
-// functions to run on page load
+
+let aboutTitle = document.getElementById("title");
+let aboutDescription = document.getElementById("description");
+let editTitle = document.getElementById("title_input");
+let editDescription = document.getElementById("description_input");
+let aboutImage = document.querySelector(".about_self .image .avatar_img");
+let previewImage = document.querySelector("#avatar_img");
+
+
+let hero = document.getElementById("hero");
+let hero_title = document.getElementById("hero_title");
+let hero_subtitle = document.getElementById("hero_subtitle");
+let h_modal = document.getElementById("hero_modal");
+let h_color = document.getElementById("hero_color");
+
 
 let submit_button = document.getElementById("submit_button");
 let form  = document.getElementById("form");
 let hero_form = document.getElementById("hero_modal");
 let hero_submit = document.getElementById("submit_hero_form");
+
+let h_blog_title_in = document.getElementById("h_blog_title_in");
+let h_subtitle_in = document.getElementById("h_blog_subtitle_in");
 
 let color1 = document.getElementById("hero_color1");
 let color2 = document.getElementById("hero_color2");
@@ -22,142 +39,10 @@ let subtitle_preview = document.getElementById("subtitle_preview");
 let radio_color = document.getElementsByName("answer");
 
 
-window.onload = function()
-{
-
-	getUserInfo();
-	loadData();
-}
-
-// check for input from radio color 
-for(let i = 0; i < radio_color.length; i++)
-{
-	radio_color[i].addEventListener("click", () =>
-		{
-			if(radio_color[0].checked == true)
-			{
-				console.log("r1 checked");
-				color2.style.display = "block"
-				// on switch to 'yes' for optional color set to gradient
-				color_preview.style.background = "linear-gradient(45deg," + color1.value + "," + color2.value + ")";
-			}
-			if(radio_color[1].checked == true)
-			{
-				console.log("r2 checked");
-				color2.style.display = "none"
-				// set preview bg color to the single color
-				color_preview.style.background = color1.value;
-			}
-		});
-}
-
-
-
-color1.addEventListener("change", () =>
-{
-	console.log("color 1 changed");
-	colorChange1 = true;
-	// change preview color
-	if(radio_color[0].checked === true)
-	{
-		color_preview.style.background = "linear-gradient(45deg," + color1.value + "," + color2.value + ")";
-	}
-	else
-	{
-		color_preview.style.background = color1.value;
-
-	}
-	
-});
-
-color2.addEventListener("change", () =>
-{
-	console.log("color 2 changed");
-	colorChange2 = true;
-	// change preview bg to linear gradient between the two colors
-	color_preview.style.background = "linear-gradient(45deg," + color1.value + "," + color2.value + ")";
-});
-
-title_color.addEventListener("change", () =>
-{
-	title_preview.style.color = title_color.value;
-	title_change = true;
-})
-
-subtitle_color.addEventListener("change", () =>
-{
-	subtitle_preview.style.color = subtitle_color.value;
-	subtitle_change = true;
-})
-
-form.addEventListener("submit", function(event)
-	{
-		event.preventDefault();
-	});
-
-submit_button.addEventListener("click", () => 
-	{
-
-		updateAbout();
-		setTimeout(() =>
-			{
-				console.log("clicked");
-				manualSubmission(form, "submitForm", "hidden button");
-			}, 500);
-	});
-
-
-	// hero form
-	hero_form.addEventListener("submit", (event) =>
-		{
-			event.preventDefault();
-		});
-	hero_submit.addEventListener("click", () =>
-		{
-			updateHero();
-			setTimeout(() =>
-				{
-					location.reload();
-				}, 500);
-		});
-
-
-
-
-function manualSubmission(frm, name, value)
-{
-	console.log("called");
-	//manually submit using a button instead of submit button
-	// create an element to append to the
-	let hiddenInput = document.createElement("input");
-
-	// append attributes:
-		// hide element, set name, set value
-	hiddenInput.setAttribute("type", "hidden");
-	hiddenInput.setAttribute("name", name);
-	hiddenInput.setAttribute("value", value);
-	// append
-	form.appendChild(hiddenInput);
-
-	// submit
-	frm.submit();
-}
-
-
-
+// edit about modal
 function openModal()
 {
 	let element = document.querySelector("#aboutModal");
-	let aboutTitle = document.getElementById("title");
-	let aboutDescription = document.getElementById("description");
-	let editTitle = document.getElementById("title_input");
-	let editDescription = document.getElementById("description_input");
-	let aboutImage = document.querySelector(".about_self .image .avatar_img");
-	let previewImage = document.querySelector("#avatar_img");
-
-	
-	// TODO : load file from input into preview display window(temporarily for preview)
-
 
 	// make modal active
 	element.classList.add("is-active");
@@ -177,21 +62,13 @@ function closeModal()
 	element.classList.remove("is-active");
 }
 
+// hero modal
 function openHeroModal()
 {
-	let h_modal = document.getElementById("hero_modal");
-	// inputs
-	let h_blog_title_in = document.getElementById("h_blog_title_in");
-	let h_subtitle_in = document.getElementById("h_blog_subtitle_in");
-	let h_color = document.getElementById("hero_color");
-	// actual values from the webpage
-	let hero_title = document.getElementById("hero_title");
-	let hero_subtitle = document.getElementById("hero_subtitle");
-
 	// toggle visibility on
 	h_modal.classList.add("is-active");
 
-	// add previous values to text fields
+	// add values from the page to the modal
 	h_blog_title_in.value = hero_title.textContent.trim();
 	h_subtitle_in.value = hero_subtitle.textContent.trim();
 
@@ -200,7 +77,6 @@ function openHeroModal()
 
 function closeHeroModal()
 {
-	let h_modal = document.getElementById("hero_modal");
 	h_modal.classList.remove("is-active");
 }
 
@@ -208,16 +84,6 @@ function closeHeroModal()
 
 function updateHero()
 {
-	let h_modal = document.getElementById("hero_modal");
-	// inputs
-	let h_blog_title_in = document.getElementById("h_blog_title_in");
-	let h_subtitle_in = document.getElementById("h_blog_subtitle_in");
-	let h_color = document.getElementById("hero_color");
-	// actual values from the webpage
-	let hero_title = document.getElementById("hero_title");
-	let hero_subtitle = document.getElementById("hero_subtitle");
-	let color1 = document.getElementById("hero_color1");
-	let color2 = document.getElementById("hero_color2");
 
 	let c1;
 	let c2;
@@ -225,8 +91,8 @@ function updateHero()
 	let updateList = {};
 	let json_updateList = {};
 
-
-
+	// verify if the user has entered a new value to be submitted
+		// if so add to list to be sent to server
 	if(h_blog_title_in.value.trim() !== hero_title.textContent.trim() && h_blog_title_in.value !== "")
 	{
 		updateList["title"] = h_blog_title_in.value;
@@ -266,9 +132,6 @@ function updateHero()
 		updateList["subtitle_color"] = subtitle_color.value.slice(1);
 	}
 
-
-	console.log(updateList);
-
 	//ajax
 	let xmlHttp = get_ajaxHandle();
 	xmlHttp.onreadystatechange = function()
@@ -295,12 +158,7 @@ function updateHero()
 
 function updateAbout()
 {
-	console.log("update btn ran");
 
-	let aboutTitle = document.getElementById("title");
-	let aboutDescription = document.getElementById("description");
-	let editTitle = document.getElementById("title_input");
-	let editDescription = document.getElementById("description_input");
 	// list to hold items for update to be sent to the server
 	let updateList = {};
 	let returnList = {};
@@ -345,13 +203,11 @@ function updateAbout()
 	}
 
 	closeModal();
-	// location.reload();
 }
 
 // load variable data from db into editable fields
 function loadData()
 {
-	// console.log("loaded")
 	//elements
 	let aboutTitle = document.getElementById("title");
 	let aboutDescription = document.getElementById("description");
@@ -363,9 +219,6 @@ function loadData()
 	let hero_subtitle = document.getElementById("hero_subtitle");
 	let color1 = document.getElementById("hero_color1");
 	let color2 = document.getElementById("hero_color2");
-
-	// get preview
-	let color_preview = document.getElementById("color_preview");
 
 	let response;
 
@@ -456,17 +309,3 @@ function changePreviewImage()
 }
 
 
-function get_ajaxHandle()
-{
-	let xmlhttp;
-	if (window.XMLHttpRequest)
-	{
-		xmlhttp = new XMLHttpRequest();
-	}
-	else
-	{
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-
-	return xmlhttp;
-}

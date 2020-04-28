@@ -8,6 +8,22 @@
 <?php
 
 	include "../../inc/dbinfo.inc";
+	include "php/db_functions.php";
+?>
+
+<?php
+
+	// handle to db
+	$handle = getDB("real_blogDB");
+
+	// query for table data
+		// load hero title, subtitle; about title, about description
+	$sql = "SELECT title, subtitle FROM aboutTable";
+	if($result = $handle -> query($sql))
+	{
+
+	}
+
 ?>
 
 
@@ -25,8 +41,8 @@
 	<script src="https://kit.fontawesome.com/977fbb6c45.js" crossorigin="anonymous"></script>
 
 	<script src = "js/js_ajax.js"></script>
+	<script src = "js/js_lib.js"></script>
 
-	
 	
 </head>
 <body>
@@ -262,7 +278,8 @@
 
 						<!-- image -->
 						<figure class = "image is-128x128" id = "about_image_container">
-							<!-- <img class = "is-rounded avatar_img" src = "images/sample_avatar.jfif"> -->
+
+							<!-- load image -->
 							<?php
 								//get image 
 								$dirName = "/var/www/html/blog/php/img";
@@ -403,9 +420,19 @@
 	</footer>
 
 
-
+	<!-- scripts -->
 	<script type="text/javascript" src = "js/index_js_stuff.js"></script>
 	<script src = "js/logout.js"></script>
+	<script src = "js/index_events.js"></script>
+
 
 </body>
 </html>
+
+
+<?php
+
+	// close handles
+	$handle -> close();
+
+?>

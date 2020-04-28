@@ -20,10 +20,6 @@
 
 	$result = queryDB($handle, $sql);
 
-	// put default values in table
-	// $sql = "INSERT INTO aboutTable (title, description)
-	// 		VALUES ('Default title', 'Default description')";
-
 
 	// respond to ajax request
 	$updateList = [];
@@ -47,8 +43,6 @@
 
 		echo json_encode($updateList);
 	}
-
-
 
 	// close handle
 	$handle -> close();

@@ -2,8 +2,6 @@
 
 	session_start();
 
-
-
 	// echo "This script ran";
 	if($_SESSION["user_logged_in"])
 	{
@@ -14,8 +12,6 @@
 	{
 		echo "egg";
 	}
-
-
 
 ?>
 

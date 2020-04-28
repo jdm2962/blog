@@ -1,13 +1,16 @@
-<?php
-	
-	include "../../../inc/dbinfo.inc"
 
+<!--  -->
+<!-- USE WHEN I GET THE TEXT EDITOR WORKING -->
+<!--  -->
+
+<?php
+	include "db_function.php"
 ?>
 
 <?php
 
 	// connect
-	$handle = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, "real_blogDB");
+	$handle = getDB("real_blogDB");
 
 	if ($handle -> connect_error)
 	{
@@ -73,24 +76,6 @@
 			echo "Execute Successful";
 			header("location: ../../blog");
 		}
-
-
-
-
-
-		// if ($handle -> query($sql))
-		// {
-		// 	echo "<br>Post entered!";
-		// 	header('location: ../../blog');
-		// }
-		// else
-		// {
-		// 	echo "<br>Post not entered! :<";
-		// 	if($handle -> error)
-		// 	{
-		// 		echo "<br>Error" . $handle -> error;
-		// 	}
-		// }
 	}
 
 	else
@@ -98,7 +83,6 @@
 		header("location: ../postcreation.php");
 	}
 	
-
 	$handle -> close();
 
 ?>

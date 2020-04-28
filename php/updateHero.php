@@ -38,8 +38,6 @@
 	// title_color
 	// subtitle_color
 
-
-	
 	// first entry..dummy data
 	// $sql = "INSERT INTO heroTable (title, subtitle, color)
 	// 		VALUES ('dummy title', 'dummy subtitle', '#fff')";
@@ -53,11 +51,8 @@
 	// }
 
 
-
 	// query db w/ entry
 	$json_updateList = json_decode($_REQUEST["json"], true);
-	// echo $json_updateList;
-	// $testList = ["title" => "New Title", "subtitle" => "New Subtitle", "color" => "#ccc", "color2" => "#aaa"];
 
 	foreach($json_updateList as $key => $value)
 	{
@@ -71,14 +66,6 @@
 		$stmt -> execute();
 
 	}
-	
-
-
-
-	// update with actual data.. only update from here on after
-	// only need the one column
-	// $stmt = $handle -> prepare($sql);
-
 
 	// test
 	$sql = "SELECT * FROM heroTable";
@@ -100,27 +87,5 @@
 
 	// close handle, stmt
 	$handle -> close();
-
-	$list = ["color" => "#sdfff"];
-	$json_list = json_encode($list);
-	// echo $json_list . "<br>";
-	$j = json_decode($json_list, true);
-	echo gettype($j); 
-	foreach($list as $key => $value)
-	{
-		echo "$key => $value";
-	}
-
-
-
-	
-	// if($json_updateList)
-	// {
-	// 	echo json_encode($_REQUEST["json"]);
-	// }
-	// else
-	// {
-	// 	echo "No json";
-	// }
-
+	$stmt -> close();
 ?>

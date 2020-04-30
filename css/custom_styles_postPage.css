@@ -1,16 +1,13 @@
-html, body
+
+html
 {
-	width : 100%;
+	overflow : auto;
 	height : 100%;
-	padding : 0;
-	margin : 0;
 }
 
-.main_sec
+body
 {
-	height : 100%;
-	width : 80%;
-	margin : auto;
+	/*height : 100%;*/
 }
 
 .center
@@ -21,39 +18,63 @@ html, body
 	align-items :center;
 }
 
-.form
+
+.main_sec
 {
+	/*height : 100%;*/
 	width : 100%;
-	height : 100%;
 }
 
-.field .title_container
+#post_form
 {
 	width : 80%;
+	display : flex;
+	flex-direction : column;
+	align-items : center;
 }
 
-.field .control .title
+#title_container
+{
+	width : 60%;
+	margin : 20px 0px;
+}
+
+#title_container .control
 {
 	width : 100%;
 }
 
-.field .post_container
+#title_container .control input
+{
+	text-align : center;
+	font-size : 1.3em;
+}
+
+#post_container
 {
 	width : 100%;
+	height : 80%;
+	display : flex;
+	flex-direction : column;
+	align-items : center;
+}
+
+#post_control
+{
+	width : 90%;
 	height : 100%;
 }
 
-.field .control .post
+#trix_content
 {
-	width : 100%;
+	/*height : 90%;*/
+	background : white;
+	/*overflow : auto;*/
 }
 
-.field .submit_container
+#submit_container .submit_container
 {
-	width : 100%;
+	width : 50%;
+	margin : 20px 0;
 }
 
-.field .control .button
-{
-	width : 60%;
-}

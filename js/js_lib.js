@@ -22,9 +22,6 @@ function manualSubmission(frm, name, value)
 }
 
 
-
-
-
 // ajax
 function get_ajaxHandle()
 {

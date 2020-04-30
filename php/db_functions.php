@@ -18,10 +18,18 @@
 	} 
 
 	// function to query database returns the results
-	function queryDB($handle, $sql)
+	function queryDB($handle, $sql, $isMultiple = false)
 	{
+		if($isMultiple)
+		{
+			$result = $handle -> multi_query($sql);
+		}
 
-		$result = $handle -> query($sql);
+		else
+		{
+			$result = $handle -> query($sql);
+		}
+		
 		if (!$result)
 		{
 			die("Error querying the db. Error: " . $handle -> error);

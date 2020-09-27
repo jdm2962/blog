@@ -65,7 +65,7 @@ body
 	height : 100%;
 }
 
-#trix_content
+.trix-content
 {
 	/*height : 90%;*/
 	background : white;

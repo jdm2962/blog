@@ -31,7 +31,7 @@
 	<body onload = "getUserInfo()" class = "center">
 
 
-		<form class = "display_if_logged_in has-background-white-ter is-primary" method = "POST" action = "php/postDB.php" id = "post_form">
+		<form class = "display_if_logged_in has-background-white-ter is-primary" method = "POST" action = "postcreation.php" id = "post_form">
 
 			<!-- title -->
 			<div class = "field center" id = "title_container">
@@ -53,7 +53,7 @@
 					<input id="x" value="Editor content goes here" type="hidden" name="content">
   					<trix-editor input="x" class = "trix-content"></trix-editor>
 
-					<div class="trix-content">Stored content here</div>
+					<div class="trix-content">Stored Content goes here</div>
 				</div>
 			</div>
 
@@ -68,5 +68,15 @@
 
 	</body>
 </html>
+
+
+<?php
+
+	var_dump($_REQUEST);
+	echo "<br>";
+	var_dump($_FILES);
+	var_dump($_GET);
+
+?>
 
 
